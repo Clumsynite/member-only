@@ -1,0 +1,19 @@
+{
+  "name": "member-only",
+  "version": "1.0.0",
+  "description": "An Authentication practice project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Clumsynite/member-only.git"
+  },
+  "author": "Clumsyknight",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Clumsynite/member-only/issues"
+  },
+  "homepage": "https://github.com/Clumsynite/member-only#readme"
+}
