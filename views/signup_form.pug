@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    div.vertical-center
+      div.card.bg-dark.text-white.mx-auto
+        h5.card-header.text-center Please Signup
+        div.card-body
+          form(action="" method="POST")
+            div.form-row
+              div.form-group.col-md-6
+                label(for="fname") First Name:
+                input.form-control#fname(type="Text" minlength="2" maxlength="20" size="30" name="fname" placeholder="First Name" required="true")
+              div.form-group.col-md-6
+                label(for="lname") Last Name:
+                input.form-control#lname(type="Text" minlength="2" maxlength="20" size="30" name="lname" placeholder="Last Name" required="true")
+            div.form-group
+              label(for="username") Username:
+              input.form-control#username(type="Text" minlength="6" maxlength="20" name="username" placeholder="Username" required="true")
+            div.form-group
+              label(for="password") Password:
+              input(type="password" name="password" placeholder="Password" minlength="8" required="true").form-control#password
+            button(type='submit').btn.btn-primary.btn-block Sign Up
