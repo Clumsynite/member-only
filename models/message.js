@@ -6,7 +6,7 @@ const MessageSchema = new Schema({
   title: { type: String, require: true },
   author: { type: Schema.Types.ObjectId, ref: "User" },
   content: { type: String, require: true },
-  added: { type: Datetring, default: Date.now },
+  added: { type: Date, default: Date.now },
 });
 
 MessageSchema.virtual("timestamp", function () {
