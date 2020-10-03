@@ -6,6 +6,7 @@ const UserSchema = new Schema({
   lname: { type: String, required: true },
   username: { type: String, required: true },
   password: { type: String, required: true },
+  joined: {type: Date, default: Date.now}
 });
 
 UserSchema.virtual('fullname').get(function (){
