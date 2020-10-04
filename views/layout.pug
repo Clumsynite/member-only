@@ -10,7 +10,7 @@ html(lang="en")
   body
     nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.mb-4
       div.container
-        a.navbar-brand(href='/') Anon Discussions
+        a.navbar-brand(href='/' title=user ? `Hello ${user.fullname}` : 'Anon Discussions') Anon Discussions
         button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation")
           span.navbar-toggler-icon
         div.collapse.navbar-collapse#navbarNav
