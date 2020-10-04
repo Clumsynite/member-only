@@ -27,7 +27,7 @@ exports.new_message_post = (req, res, next) => {
   });
   message.save((err, data) => {
     if (err) {
-      res.render("message_form", { errors: err });
+      res.render("message_form", { errors: err, title: "New message", user: req.user || {status: 'public'} });
       return;
     }
     res.redirect("/");
