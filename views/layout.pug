@@ -21,8 +21,12 @@ html(lang="en")
               li.nav-item
                 a.nav-link(href='/signup' class= title==='SignUp' ? 'active' : '') Sign Up
             else
+              if user.status==='public'
+                li.nav-item
+                  a.nav-link(href='/join') Join US
               li.nav-item
                 a.nav-link(href='/logout') Logout
+
     div.container
       block content
 
