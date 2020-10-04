@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div.vertical-center
+    div.card.text-center.w-50.mb-5.mx-auto.bg-primary.text-white
+      h5.card-header.bg-dark Join US
+      div.card-body.mx-auto
+        form(action="" method="POST")
+          div.form-group
+            input(type="password" name="secret" placeholder="Enter the SECRET KEY" required="true").form-control
+          button(type='submit').btn.btn-dark.btn-block JOIN
+  
+  if errors
+    each error in errors
+      div.alert.alert-danger #{error}
