@@ -2,16 +2,16 @@ extends layout
 
 block content
   if state
-    a.btn.btn-outline-primary.btn-block.mb-3(href='/new') Add Message
+    a.btn.btn-outline-primary.btn-block.mb-3(href='/new-message') Add Message
 
   if messages
     each message in messages
-     div.card
-      div.card-body.text-white.bg-primary
-        h5.card-title #{message.title}
-        p.card-text #{message.content}
-      div.card-footer.text-white.bg-dark #{messages.author}  
-      div.card-footer.text-white.bg-dark #{moment(messages.added).format('LLLL')}
+     div.card.text-white.bg-primary
+      h5.card-header.text-center #{message.title}
+      div.card-body
+        p.card-text(style='white-space:pre;') #{message.content}
+      div.card-footer.text-white.bg-dark.text-right By #{message.author.fullname}  
+      div.card-footer.text-white.bg-dark.text-right #{message.timestamp}
   else
     div.card.text-white.bg-dark
       h3.card-header  Looks so empty
