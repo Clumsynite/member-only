@@ -10,8 +10,8 @@ block content
       h5.card-header.text-center #{message.title}
       div.card-body
         p.card-text(style='white-space:pre;') #{message.content}
-      div.card-footer.text-white.bg-dark.text-right By #{message.author.fullname}  
-      div.card-footer.text-white.bg-dark.text-right #{message.timestamp}
+      div.card-footer.text-white.bg-dark.text-right By #{ user.status==='public' ? 'Anonymous' : message.author.fullname}  
+      div.card-footer.text-white.bg-dark.text-right #{user.status==='public' ? 'On a Mysterious date' : message.timestamp}
   else
     div.card.text-white.bg-dark
       h3.card-header  Looks so empty
