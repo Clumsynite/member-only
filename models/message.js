@@ -9,7 +9,7 @@ const MessageSchema = new Schema({
   added: { type: Date, default: Date.now },
 });
 
-MessageSchema.virtual("timestamp", function () {
+MessageSchema.virtual("timestamp").get(() => {
   return moment(this.added).format("MMMM Do YYYY, h:mm:ss a");
 });
 
