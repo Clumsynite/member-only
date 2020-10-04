@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
   joined: { type: Date, default: Date.now },
+  status: {type:String, enum: ['public','private', 'admin'], default: 'public'}
 });
 
 UserSchema.virtual("fullname").get(function () {
