@@ -12,6 +12,7 @@ exports.get_messages = (req, res, next) => {
         user: req.user,
         state: req.isAuthenticated(),
         messages: data,
+        user: req.user || {status: 'public'}
       });
     });
 };
