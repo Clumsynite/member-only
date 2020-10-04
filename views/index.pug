@@ -1,4 +1,22 @@
 extends layout
 
 block content
-  div #{user ? user.fullname : 'aaa'}
+  if state
+    a.btn.btn-outline-primary.btn-block.mar-top-20(href='/new') Add Message
+
+  if messages
+    each message in messages
+     div.card.mt-2
+      div.card-body.text-white.bg-primary
+        h5.card-title #{message.title}
+        p.card-text #{message.content}
+      div.card-footer.text-white.bg-dark #{messages.author}  
+      div.card-footer.text-white.bg-dark #{moment(messages.added).format('LLLL')}
+  else
+    div.card.text-white.bg-dark
+      h3.card-header  Looks so empty
+      div.card-body 
+        a(href='/login').class-primary Login 
+        | and start writing messages now. 
+        a(href='/signup') Signup 
+        | if you are new here.
