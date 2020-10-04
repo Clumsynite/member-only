@@ -9,6 +9,7 @@ exports.get_messages = (req, res, next) => {
         return next(err);
       }
       res.render("index", {
+        title: "Anon Discussions",
         user: req.user,
         state: req.isAuthenticated(),
         messages: data,
