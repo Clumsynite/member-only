@@ -7,10 +7,15 @@ exports.signup_get = (req, res, next) => {
 };
 
 exports.signup_post = async (req, res, next) => {
-  const exists = await  User.findOne({username: req.body.username})
-  if(exists) {
-    res.render('signup_form', {title: 'SignUp', errors: {msg: 'Username already exists'}, fname: req.body.fname, lname: req.body.lname})
-  }else{
+  const exists = await User.findOne({ username: req.body.username });
+  if (exists) {
+    res.render("signup_form", {
+      title: "SignUp",
+      errors: { msg: "Username already exists" },
+      fname: req.body.fname,
+      lname: req.body.lname,
+    });
+  } else {
     bcryptjs.hash(req.body.password, 10, (err, hashedPassword) => {
       if (err) {
         return next(err);
@@ -27,7 +32,6 @@ exports.signup_post = async (req, res, next) => {
         res.redirect("/");
       });
     });
-  
   }
 };
 
@@ -37,10 +41,13 @@ exports.login_get = (req, res, next) => {
 
 exports.login_post = (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
-
     if (!user) {
-      res.render("login_form", { title: "Login", errors: info, username: req.body.username });
-      return
+      res.render("login_form", {
+        title: "Login",
+        errors: info,
+        username: req.body.username,
+      });
+      return;
     }
     req.logIn(user, function (err) {
       if (err) {
@@ -49,7 +56,7 @@ exports.login_post = (req, res, next) => {
       res.redirect("/");
     });
   })(req, res, next);
-}
+};
 
 exports.logout_get = (req, res, next) => {
   req.session.destroy((err) => {

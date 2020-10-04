@@ -61,7 +61,9 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => {
-    if(err) {return done(err)}
+    if (err) {
+      return done(err);
+    }
     done(null, user);
   });
 });
@@ -80,8 +82,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-// app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
