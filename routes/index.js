@@ -1,15 +1,32 @@
-const express = require('express');
-const router = express.Router()
+const passport = require('passport');
+const express = require("express");
+const router = express.Router();
 
-const authenticationController = require('../controllers/authenticationController');
-const messageController = require('../controllers/messageController');
+const authenticationController = require("../controllers/authenticationController");
+const messageController = require("../controllers/messageController");
 
-router.get('/', messageController.get_messages)
+const checkAuthenticated = (req, res, next) => {
+  if(req.isAuthenticated()) {
+    return next()
+  } 
+  res.redirect('/login')
+}
 
-router.get('/login', authenticationController.login_get)
+router.get("/", messageController.get_messages);
 
-router.get('/signup', authenticationController.signup_get)
+router.get("/login", authenticationController.login_get);
 
-router.post('/signup', authenticationController.signup_post)
+router.post(
+  "/login", passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  })
+);
 
-module.exports = router
+router.get("/signup", authenticationController.signup_get);
+
+router.post("/signup", authenticationController.signup_post);
+
+router.get('/logout', authenticationController.logout_get)
+module.exports = router;

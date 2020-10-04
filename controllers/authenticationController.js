@@ -1,3 +1,4 @@
+const passport = require("passport");
 const User = require("../models/user");
 const bcryptjs = require("bcryptjs");
 
@@ -28,6 +29,9 @@ exports.login_get = (req, res, next) => {
   res.render("login_form", { title: "Login" });
 };
 
-exports.login_post = (req, res, next) => {
-  res.render("login_form", { title: "Login" });
+exports.logout_get = (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) throw new Error(err);
+    res.redirect("/");
+  });
 };
