@@ -2,11 +2,11 @@ extends layout
 
 block content
   if state
-    a.btn.btn-outline-primary.btn-block.mar-top-20(href='/new') Add Message
+    a.btn.btn-outline-primary.btn-block.mb-3(href='/new') Add Message
 
   if messages
     each message in messages
-     div.card.mt-2
+     div.card
       div.card-body.text-white.bg-primary
         h5.card-title #{message.title}
         p.card-text #{message.content}
@@ -15,8 +15,11 @@ block content
   else
     div.card.text-white.bg-dark
       h3.card-header  Looks so empty
-      div.card-body 
-        a(href='/login').class-primary Login 
-        | and start writing messages now. 
-        a(href='/signup') Signup 
-        | if you are new here.
+      if !state
+        div.card-body 
+          a(href='/login').class-primary Login 
+          | and start writing messages now. 
+          a(href='/signup') Signup 
+          | if you are new here.
+      else
+        div.card-body Click the Add Message button and post a new message.
