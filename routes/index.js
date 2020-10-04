@@ -16,14 +16,6 @@ router.get("/", messageController.get_messages);
 
 router.get("/login", authenticationController.login_get);
 
-// router.post(
-//   "/login", passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/login',
-//     failureFlash: true
-//   })
-// );
-
 router.post("/login", authenticationController.login_post);
 
 router.get("/signup", authenticationController.signup_get);
