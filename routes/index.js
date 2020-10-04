@@ -1,4 +1,3 @@
-const passport = require("passport");
 const express = require("express");
 const router = express.Router();
 
@@ -35,5 +34,9 @@ router.post(
   checkAuthenticated,
   messageController.new_message_post
 );
+
+router.get("/join", checkAuthenticated, authenticationController.join_get);
+
+router.post("/join", checkAuthenticated, authenticationController.join_post);
 
 module.exports = router;
