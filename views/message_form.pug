@@ -1,7 +1,7 @@
 extends layout
 
 block content
-   form(method="POST" action="")
+  form(method="POST" action="")
     div.form-group
       label(for="title") Enter a Title for your mesage: 
       input.form-control#title(type="text" name="title" required)
@@ -10,3 +10,7 @@ block content
       textarea.form-control#content(type="text" row="4" name="content" required)
     button.btn.btn-outline-primary.btn-block(type="submit" ) Post Message
     a.btn.btn-outline-danger.btn-block(href='/') Cancel
+
+  if errors
+    each error in errors
+      div.alert.alert-danger #{error.msg}
