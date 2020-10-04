@@ -4,7 +4,11 @@ const User = require("../models/user");
 const bcryptjs = require("bcryptjs");
 
 exports.signup_get = (req, res, next) => {
-  res.render("signup_form", { title: "SignUp" });
+  res.render("signup_form", {
+    title: "SignUp",
+    user: req.user || { status: "public" },
+    state: req.isAuthenticated(),
+  });
 };
 
 exports.signup_post = [
@@ -40,7 +44,9 @@ exports.signup_post = [
         username: req.body.username,
         err: errors.errors,
         fname: req.body.fname,
-        lname: req.body.lname
+        lname: req.body.lname,
+        user: req.user,
+        state: req.isAuthenticated(),
       });
     } else {
       const exists = await User.findOne({ username: req.body.username });
@@ -50,6 +56,9 @@ exports.signup_post = [
           errors: { msg: "Username already exists" },
           fname: req.body.fname,
           lname: req.body.lname,
+          user: req.user,
+
+          state: req.isAuthenticated(),
         });
       } else {
         bcryptjs.hash(req.body.password, 10, (err, hashedPassword) => {
@@ -84,6 +93,9 @@ exports.login_post = (req, res, next) => {
         title: "Login",
         errors: info,
         username: req.body.username,
+        user: req.user,
+
+        state: req.isAuthenticated(),
       });
       return;
     }
@@ -101,4 +113,34 @@ exports.logout_get = (req, res, next) => {
     if (err) throw new Error(err);
     res.redirect("/");
   });
+};
+
+exports.join_get = (req, res, next) => {
+  res.render("join_form", {
+    title: "Join US",
+    user: req.user || { status: "public" },
+    state: req.isAuthenticated(),
+  });
+};
+
+exports.join_post = (req, res, next) => {
+  if (req.body.secret === process.env.JOIN_KEY) {
+    const user = new User({
+      status: "private",
+      _id: req.user._id,
+    });
+    User.findByIdAndUpdate(req.user._id, user, {}, (err, data) => {
+      if (err) { return next(err); }
+      res.redirect('/');
+    });
+  } else {
+    res.render("join_form", {
+      title: "Join US",
+      errors: {
+        msg: "Trying to use a different key\nRead my README for a hint ",
+      },
+      user: req.user,
+      state: req.isAuthenticated(),
+    });
+  }
 };
