@@ -23,4 +23,17 @@ router.get("/signup", authenticationController.signup_get);
 router.post("/signup", authenticationController.signup_post);
 
 router.get("/logout", authenticationController.logout_get);
+
+router.get(
+  "/new-message",
+  checkAuthenticated,
+  messageController.new_message_get
+);
+
+router.post(
+  "/new-message",
+  checkAuthenticated,
+  messageController.new_message_post
+);
+
 module.exports = router;
