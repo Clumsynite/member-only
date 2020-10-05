@@ -124,9 +124,10 @@ exports.join_get = (req, res, next) => {
 };
 
 exports.join_post = (req, res, next) => {
-  if (req.body.secret === process.env.JOIN_KEY) {
+  if (req.body.secret === process.env.JOIN_KEY || req.body.secret === process.env.ADMIN_KEY) {
+    const status = req.body.secret === process.env.JOIN_KEY ? 'private' : req.body.secret === process.env.ADMIN_KEY ? 'admin' : 'public'
     const user = new User({
-      status: "private",
+      status: status,
       _id: req.user._id,
     });
     User.findByIdAndUpdate(req.user._id, user, {}, (err, data) => {
