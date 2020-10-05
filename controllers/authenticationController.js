@@ -130,8 +130,10 @@ exports.join_post = (req, res, next) => {
       _id: req.user._id,
     });
     User.findByIdAndUpdate(req.user._id, user, {}, (err, data) => {
-      if (err) { return next(err); }
-      res.redirect('/');
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
     });
   } else {
     res.render("join_form", {
