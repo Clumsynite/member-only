@@ -39,15 +39,25 @@ exports.new_message_post = (req, res, next) => {
 };
 
 exports.message_delete_get = (req, res, next) => {
-  Message.findById(req.params.id).populate('author').exec((err, data) => {
-    if(err) {return next(err)}
-    res.render('message_delete', {title: `Delete ${data.title}`, user: req.user, message: data})
-  })
-}
+  Message.findById(req.params.id)
+    .populate("author")
+    .exec((err, data) => {
+      if (err) {
+        return next(err);
+      }
+      res.render("message_delete", {
+        title: `Delete ${data.title}`,
+        user: req.user,
+        message: data,
+      });
+    });
+};
 
 exports.message_delete_post = (req, res, next) => {
   Message.findByIdAndRemove(req.body.messageid, (err) => {
-    if(err) {return next(err)}
-    res.redirect('/')
-  })
-}
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
