@@ -7,7 +7,7 @@ block content
   if messages
     each message in messages
       div.card.text-white.bg-primary
-        div.card-header.text-center
+        div.card-header.text-center(class= user.status!=='public' ? 'bg-dark' : '')
           if user.status==='admin'
             div.d-flex.justify-content-between
               h5 #{message.title}
