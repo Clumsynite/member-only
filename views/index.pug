@@ -6,12 +6,12 @@ block content
 
   if messages
     each message in messages
-      div.card.text-white.bg-primary
+      div.card.text-white.bg-primary.mb-2
         div.card-header.text-center(class= user.status!=='public' ? 'bg-dark' : '')
           if user.status==='admin'
             div.d-flex.justify-content-between
               h5 #{message.title}
-              a(href='#').text-danger
+              a(href=`/${message._id}/delete`).text-danger
                 i.material-icons delete
           else
             h5 #{message.title}
