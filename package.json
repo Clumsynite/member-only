@@ -2,6 +2,9 @@
   "name": "member-only",
   "version": "1.0.0",
   "description": "An Authentication practice project",
+  "engines": {
+    "node": "12.17.0"
+  },
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
