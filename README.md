@@ -16,7 +16,7 @@ Furthermore, there's another status promotion if you enter the Admin code.
 
 - Use this code for Admin Access: **ROUNDTABLE**
 
-Using this will promote you to admin, this'll grant you permission to delete messages. Use this status carefully.
+Using this will promote you to admin, this'll grant you permission to delete messages. Use the admin status carefully.
 > With great power comes great responsibility
 
 ## Commands
