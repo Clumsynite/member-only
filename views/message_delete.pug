@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  p Are you sure you want to delete this message?
+
+  div.card.text-white.bg-primary.mb-2
+    div.card-header.text-center.bg-dark
+      h5 #{message.title}
+    div.card-body
+      p.card-text(style='white-space:pre;') #{message.content}
+    div.card-footer.text-white.bg-dark.text-right By #{message.author.fullname}  
+    div.card-footer.text-white.bg-dark.text-right #{message.timestamp}
+
+  form(method='POST' action='')
+    div.form-group
+      input#messageid.form-control(type='hidden',name='messageid', required='true', value=message._id )
+
+    button.btn.btn-outline-primary.btn-block(type='submit') Delete #{message.title}
