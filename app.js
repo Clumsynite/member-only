@@ -76,7 +76,6 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: sessionStore,
-    cookie: { maxAge: 10 * 3000 },
   })
 );
 
