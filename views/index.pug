@@ -6,12 +6,19 @@ block content
 
   if messages
     each message in messages
-     div.card.text-white.bg-primary
-      h5.card-header.text-center #{message.title}
-      div.card-body
-        p.card-text(style='white-space:pre;') #{message.content}
-      div.card-footer.text-white.bg-dark.text-right By #{ user.status==='public' ? 'Anonymous' : message.author.fullname}  
-      div.card-footer.text-white.bg-dark.text-right #{user.status==='public' ? 'On a Mysterious date' : message.timestamp}
+      div.card.text-white.bg-primary
+        div.card-header.text-center
+          if user.status==='admin'
+            div.d-flex.justify-content-between
+              h5 #{message.title}
+              a(href='#').text-danger
+                i.material-icons delete
+          else
+            h5 #{message.title}
+        div.card-body
+          p.card-text(style='white-space:pre;') #{message.content}
+        div.card-footer.text-white.bg-dark.text-right By #{ user.status==='public' ? 'Anonymous' : message.author.fullname}  
+        div.card-footer.text-white.bg-dark.text-right #{user.status==='public' ? 'On a Mysterious date' : message.timestamp}
   else
     div.card.text-white.bg-dark
       h3.card-header  Looks so empty
