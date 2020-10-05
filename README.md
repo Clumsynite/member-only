@@ -18,3 +18,30 @@ Furthermore, there's another status promotion if you enter the Admin code.
 
 Using this will promote you to admin, this'll grant you permission to delete messages. Use this status carefully.
 > With great power comes great responsibility
+
+## Commands
+
+### Install Node modules from package.json
+
+```sh
+  npm i
+```
+
+### Run the app locally
+
+```sh
+  npm run start
+```
+
+### Important Packages used
+
+- **bcryptjs** : *To hash passwords*
+- **connect-mongo**: *To store session on mongodb*
+- **dotenv**: *To access environment variables*
+- **express-session**: *To initiate and manage session on server*
+- **moment**: *To parse timestamp*
+- **mongoose**: *To access and modify mongodb*
+- **nodemon**: *To restart server on save*
+- **passport**: *To authenticate User*
+- **passport-local**: *Access passport's Local Strategy*
+- **pug**: *HTML template engine for javascript*
